@@ -108,15 +108,15 @@ class Reviewer(Mentor):
 
 student1 = Student('Sergei', 'Kapustin', 'man')
 student1.finished_courses += ['Вводный курс']
-student1.courses_in_progress += ['Python', 'Java']
+student1.courses_in_progress += ['Python', 'Java', 'CSS']
 student2 = Student('Vasya', 'Pupkin', 'man')
 student2.finished_courses += ['Вводный курс']
-student2.courses_in_progress += ['Python', 'CSS', 'HTML']
+student2.courses_in_progress += ['Python', 'Java', 'CSS', 'HTML']
 # print(student1.courses_in_progress, student1.finished_courses)
 # print(student2.courses_in_progress, student1.finished_courses)
 
 lecturer1 = Lecturer('John', 'Rambo')
-lecturer1.courses_attached += ['Python', 'CSS']
+lecturer1.courses_attached += ['Python', 'CSS', 'HTML']
 lecturer2 = Lecturer('Jackie', 'Chan')
 lecturer2.courses_attached += ['Java', 'CSS', 'HTML']
 # print(lecturer1.courses_attached)
