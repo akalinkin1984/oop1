@@ -112,22 +112,16 @@ student1.courses_in_progress += ['Python', 'Java', 'CSS']
 student2 = Student('Vasya', 'Pupkin', 'man')
 student2.finished_courses += ['Вводный курс']
 student2.courses_in_progress += ['Python', 'Java', 'CSS', 'HTML']
-# print(student1.courses_in_progress, student1.finished_courses)
-# print(student2.courses_in_progress, student1.finished_courses)
 
 lecturer1 = Lecturer('John', 'Rambo')
 lecturer1.courses_attached += ['Python', 'CSS', 'HTML']
 lecturer2 = Lecturer('Jackie', 'Chan')
 lecturer2.courses_attached += ['Java', 'CSS', 'HTML']
-# print(lecturer1.courses_attached)
-# print(lecturer2.courses_attached)
 
 reviewer1 = Reviewer('Dolph', 'Lundgren')
 reviewer1.courses_attached += ['Java', 'CSS']
 reviewer2 = Reviewer('John', 'Travolta')
 reviewer2.courses_attached += ['Python', 'HTML']
-# print(reviewer1.courses_attached)
-# print(reviewer2.courses_attached)
 
 student1.rate_hw(lecturer1, 'Python', 8)
 student1.rate_hw(lecturer2, 'Java', 8)
@@ -135,6 +129,7 @@ student2.rate_hw(lecturer1, 'CSS', 9)
 student2.rate_hw(lecturer2, 'HTML', 7)
 
 reviewer1.rate_hw(student1, 'Java', 10)
+reviewer1.rate_hw(student1, 'CSS', 8)
 reviewer1.rate_hw(student2, 'CSS', 9)
 reviewer2.rate_hw(student1, 'Python', 9)
 reviewer2.rate_hw(student2, 'HTML', 7)
@@ -158,5 +153,37 @@ print()
 print(lecturer1 < lecturer2)
 print(lecturer1 > lecturer2)
 print(lecturer1 == lecturer2)
+print()
+
+students_list = [student1, student2]
+lecturers_list = [lecturer1, lecturer2]
 
 
+def average_grade_all_students(stud_list, course):
+    average_value = 0
+    count = 0
+    for student in stud_list:
+        if isinstance(student, Student) and course in student.grades:
+            average_value += sum(student.grades[course])
+            count += len(student.grades[course])
+    if count == 0:
+        return 0
+    else:
+        return round(average_value / count, 1)
+
+
+def average_grade_all_lecturers(lect_list, course):
+    average_value = 0
+    count = 0
+    for lecturer in lect_list:
+        if isinstance(lecturer, Lecturer) and course in lecturer.grades:
+            average_value += sum(lecturer.grades[course])
+            count += len(lecturer.grades[course])
+    if count == 0:
+        return 0
+    else:
+        return round(average_value / count, 1)
+
+
+print(average_grade_all_students(students_list, 'CSS'))
+print(average_grade_all_lecturers(lecturers_list, 'HTML'))
